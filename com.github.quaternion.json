@@ -21,16 +21,9 @@
                 {
                     "type": "git",
                     "url": "git://github.com/QMatrixClient/Quaternion.git",
-                    "branch": "v0.0.4",
-                    "commit": "e2a6ebe0c306f35d3d6d408a93e68b5a05f2bce0"
-                },
-                {
-                    "type": "file",
-                    "path": "com.github.quaternion.appdata.xml"
+                    "branch": "v0.0.5",
+                    "commit": "f6ae506c14acb223bdc196124efd4f35d6ffa2bb"
                 }
-            ],
-            "post-install": [
-                "install -Dm644 com.github.quaternion.appdata.xml /app/share/appdata/com.github.quaternion.appdata.xml"
             ]
         }
     ]
