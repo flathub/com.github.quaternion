@@ -21,8 +21,8 @@
                 {
                     "type": "git",
                     "url": "git://github.com/QMatrixClient/Quaternion.git",
-                    "branch": "v0.0.9",
-                    "commit": "f80f51d08b6527304eae17e6148e9a60889b0b8f"
+                    "branch": "v0.0.9.1",
+                    "commit": "3c166502c2f5c46fea09625aeb5d297df2d3c920"
                 }
             ]
         }
