@@ -17,6 +17,7 @@
         {
             "name": "libqmatrixclient",
             "buildsystem": "cmake-ninja",
+	    "cleanup": ["/include", "/lib", "/share", "/bin/qmc-example"],
             "sources": [
                 {
                     "type": "archive",
@@ -28,6 +29,7 @@
         {
             "name": "quaternion",
             "buildsystem": "cmake-ninja",
+	    "cleanup": ["/lib"],
             "sources": [
                 {
                     "type": "archive",
