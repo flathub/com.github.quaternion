@@ -3,7 +3,7 @@
     "rename-icon": "quaternion",
     "rename-desktop-file": "quaternion.desktop",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.9",
+    "runtime-version": "5.12",
     "sdk": "org.kde.Sdk",
     "command": "quaternion",
     "finish-args": [
@@ -22,7 +22,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/QMatrixClient/libqmatrixclient.git",
-                    "tag": "0.5.0"
+                    "tag": "0.5.0.2"
                 }
             ]
         },
@@ -34,7 +34,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/QMatrixClient/Quaternion.git",
-                    "tag": "0.0.9.4-beta1"
+                    "tag": "0.0.9.4-beta2"
                 }
             ]
         }
