@@ -1,7 +1,6 @@
 {
     "id": "com.github.quaternion",
     "rename-icon": "quaternion",
-    "rename-desktop-file": "com.github.quaternion.desktop",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.12",
     "sdk": "org.kde.Sdk",
