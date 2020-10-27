@@ -2,7 +2,7 @@
     "id": "com.github.quaternion",
     "rename-icon": "quaternion",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.12",
+    "runtime-version": "5.14",
     "sdk": "org.kde.Sdk",
     "command": "quaternion",
     "finish-args": [
@@ -14,14 +14,14 @@
     ],
     "modules": [
         {
-            "name": "libqmatrixclient",
+            "name": "libquotient",
             "buildsystem": "cmake-ninja",
-            "cleanup": ["/include", "/lib", "/share", "/bin/qmc-example"],
+            "cleanup": ["/include", "/lib", "/share", "/bin/quotest"],
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/quotient-im/libqmatrixclient.git",
-                    "tag": "0.5.2"
+                    "url": "https://github.com/quotient-im/libQuotient.git",
+                    "tag": "0.6.2"
                 }
             ]
         },
@@ -33,7 +33,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/quotient-im/Quaternion.git",
-                    "tag": "0.0.9.4c-rc"
+                    "tag": "0.0.9.5-beta2"
                 }
             ]
         }
