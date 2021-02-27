@@ -18,11 +18,13 @@ finish-args:
 modules:
 - name: libquotient
   buildsystem: cmake-ninja
-  cleanup: [ /include, /lib, /share, /bin/quotest ]
+  cleanup: [ /include, /lib, /share ]
   sources:
   - type: git
     url: https://github.com/quotient-im/libQuotient.git
     tag: '0.6.5'
+  config-opts:
+  - -DQuotient_INSTALL_TESTS=OFF
 - name: quaternion
   buildsystem: cmake-ninja
   cleanup: [ /lib ]
