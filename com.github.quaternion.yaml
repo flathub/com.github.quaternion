@@ -38,9 +38,9 @@ modules:
   - -Dintrospection=false
   cleanup: [ /bin, /include, /lib/pkgconfig, /share/man ]
   sources:
-      type: git
-      url: https://gitlab.gnome.org/GNOME/libsecret.git
-      tag: '0.20.4'
+  - type: git
+    url: https://gitlab.gnome.org/GNOME/libsecret.git
+    tag: '0.20.4'
 - name: qtkeychain
   buildsystem: cmake-ninja
   sources:
