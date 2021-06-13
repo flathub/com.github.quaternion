@@ -2,7 +2,7 @@
     "id": "com.github.quaternion",
     "rename-icon": "quaternion",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.12",
+    "runtime-version": "5.15",
     "sdk": "org.kde.Sdk",
     "command": "quaternion",
     "finish-args": [
@@ -33,7 +33,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/quotient-im/Quaternion.git",
-                    "tag": "0.0.9.4e"
+                    "tag": "0.0.9.4f"
                 }
             ]
         }
