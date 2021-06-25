@@ -25,7 +25,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/quotient-im/libQuotient.git
-    tag: '0.6.6'
+    tag: '0.6.7'
   config-opts:
   - -DQuotient_INSTALL_TESTS=OFF
 
@@ -57,4 +57,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/quotient-im/Quaternion.git
-    tag: '0.0.95-beta5'
+    tag: '0.0.95-rc'
