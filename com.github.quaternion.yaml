@@ -1,0 +1,60 @@
+id: com.github.quaternion
+rename-icon: quaternion
+runtime: org.kde.Platform
+runtime-version: '5.15'
+sdk: org.kde.Sdk
+command: quaternion
+finish-args:
+- --share=ipc
+- --share=network
+- --socket=wayland
+- --env=QT_QPA_PLATFORM=xcb # wayland QPA plugin still has rough edges
+- --socket=x11
+#- --socket=fallback-x11 - doesn't work as expected yet
+- --device=dri
+- --filesystem=xdg-download
+- --talk-name=org.freedesktop.secrets
+- --talk-name=org.kde.kwalletd5
+- --talk-name=org.freedesktop.Notifications
+- --talk-name=org.kde.StatusNotifierWatcher
+- --own-name=org.kde.StatusNotifierItem-13-1
+modules:
+- name: libquotient
+  buildsystem: cmake-ninja
+  cleanup: [ /include, /lib, /share ]
+  sources:
+  - type: git
+    url: https://github.com/quotient-im/libQuotient.git
+    tag: '0.6.6'
+  config-opts:
+  - -DQuotient_INSTALL_TESTS=OFF
+
+- name: libsecret
+  buildsystem: meson
+  config-opts:
+  - -Dmanpage=false
+  - -Dvapi=false
+  - -Dgtk_doc=false
+  - -Dintrospection=false
+  cleanup: [ /bin, /include, /lib/pkgconfig, /share/man ]
+  sources:
+  - type: git
+    url: https://gitlab.gnome.org/GNOME/libsecret.git
+    tag: '0.20.4'
+- name: qtkeychain
+  buildsystem: cmake-ninja
+  sources:
+  - type: git
+    url: https://github.com/frankosterfeld/qtkeychain.git
+    tag: 'v0.12.0'
+  config-opts:
+  - -DQTKEYCHAIN_STATIC=ON
+  - -DBUILD_TEST_APPLICATION=OFF
+
+- name: quaternion
+  buildsystem: cmake-ninja
+  cleanup: [ /lib ]
+  sources:
+  - type: git
+    url: https://github.com/quotient-im/Quaternion.git
+    tag: '0.0.95-beta5'
