@@ -8,9 +8,9 @@ finish-args:
 - --share=ipc
 - --share=network
 - --socket=wayland
-- --env=QT_QPA_PLATFORM=xcb # wayland QPA plugin still has rough edges
-- --socket=x11
-#- --socket=fallback-x11 - doesn't work as expected yet
+#- --env=QT_QPA_PLATFORM=xcb # wayland QPA plugin still has rough edges
+#- --socket=x11
+- --socket=fallback-x11 - doesn't work as expected yet
 - --device=dri
 - --filesystem=xdg-download
 - --talk-name=org.freedesktop.secrets
