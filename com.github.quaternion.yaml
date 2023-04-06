@@ -19,6 +19,14 @@ finish-args:
 - --talk-name=org.kde.StatusNotifierWatcher
 - --own-name=org.kde.*
 modules:
+- name: libolm
+  buildsystem: cmake-ninja
+  sources:
+  - type: git
+    url: https://gitlab.matrix.org/matrix-org/olm.git
+    tag:  '3.2.14'
+  cleanup: [ /include, /lib, /share ]    
+
 - name: libsecret
   buildsystem: meson
   config-opts:
