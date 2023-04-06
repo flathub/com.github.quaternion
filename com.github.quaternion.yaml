@@ -63,7 +63,6 @@ modules:
   config-opts:
   - -DQuotient_INSTALL_TESTS=OFF
   - -DQuotient_ENABLE_E2EE=ON
-  config-opts:
   - -DBUILD_SHARED_LIBS=OFF
 
 - name: quaternion
