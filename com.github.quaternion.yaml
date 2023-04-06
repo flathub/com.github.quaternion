@@ -10,7 +10,7 @@ finish-args:
 - --socket=wayland
 #- --env=QT_QPA_PLATFORM=xcb # wayland QPA plugin still has rough edges
 #- --socket=x11
-- --socket=fallback-x11 - doesn't work as expected yet
+- --socket=fallback-x11
 - --device=dri
 - --filesystem=xdg-download
 - --talk-name=org.freedesktop.secrets
@@ -25,6 +25,8 @@ modules:
   - type: git
     url: https://gitlab.matrix.org/matrix-org/olm.git
     tag:  '3.2.14'
+  config-opts:
+  - -DBUILD_SHARED_LIBS=OFF
   cleanup: [ /include, /lib, /share ]    
 
 - name: libsecret
@@ -39,6 +41,8 @@ modules:
   - type: git
     url: https://gitlab.gnome.org/GNOME/libsecret.git
     tag: '0.20.5'
+  config-opts:
+  - -DBUILD_SHARED_LIBS=OFF
 
 - name: qtkeychain
   buildsystem: cmake-ninja
@@ -47,7 +51,7 @@ modules:
     url: https://github.com/frankosterfeld/qtkeychain.git
     tag: 'v0.13.2'
   config-opts:
-  - -DQTKEYCHAIN_STATIC=ON
+  - -DBUILD_SHARED_LIBS=OFF
   - -DBUILD_TEST_APPLICATION=OFF
 
 - name: libquotient
@@ -60,7 +64,8 @@ modules:
   config-opts:
   - -DQuotient_INSTALL_TESTS=OFF
   - -DQuotient_ENABLE_E2EE=ON
-
+  config-opts:
+  - -DBUILD_SHARED_LIBS=OFF
 
 - name: quaternion
   buildsystem: cmake-ninja
