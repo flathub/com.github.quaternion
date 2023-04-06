@@ -1,33 +1,33 @@
 id: com.github.quaternion
 rename-icon: quaternion
 runtime: org.kde.Platform
-runtime-version: '5.15'
+runtime-version: '5.15-22.08'
 sdk: org.kde.Sdk
 command: quaternion
 finish-args:
 - --share=ipc
 - --share=network
 - --socket=wayland
-- --env=QT_QPA_PLATFORM=xcb # wayland QPA plugin still has rough edges
-- --socket=x11
-#- --socket=fallback-x11 - doesn't work as expected yet
+#- --env=QT_QPA_PLATFORM=xcb # wayland QPA plugin still has rough edges
+#- --socket=x11
+- --socket=fallback-x11
 - --device=dri
 - --filesystem=xdg-download
 - --talk-name=org.freedesktop.secrets
 - --talk-name=org.kde.kwalletd5
 - --talk-name=org.freedesktop.Notifications
 - --talk-name=org.kde.StatusNotifierWatcher
-- --own-name=org.kde.StatusNotifierItem-13-1
+- --own-name=org.kde.*
 modules:
-- name: libquotient
+- name: libolm
   buildsystem: cmake-ninja
-  cleanup: [ /include, /lib, /share ]
   sources:
   - type: git
-    url: https://github.com/quotient-im/libQuotient.git
-    tag: '0.6.6'
+    url: https://gitlab.matrix.org/matrix-org/olm.git
+    tag:  '3.2.14'
   config-opts:
-  - -DQuotient_INSTALL_TESTS=OFF
+  - -DBUILD_SHARED_LIBS=OFF
+  cleanup: [ /include, /lib, /share ]    
 
 - name: libsecret
   buildsystem: meson
@@ -36,20 +36,35 @@ modules:
   - -Dvapi=false
   - -Dgtk_doc=false
   - -Dintrospection=false
+  - -Dprefer_static=true
   cleanup: [ /bin, /include, /lib/pkgconfig, /share/man ]
   sources:
   - type: git
     url: https://gitlab.gnome.org/GNOME/libsecret.git
-    tag: '0.20.4'
+    tag: '0.20.5'
+
 - name: qtkeychain
   buildsystem: cmake-ninja
   sources:
   - type: git
     url: https://github.com/frankosterfeld/qtkeychain.git
-    tag: 'v0.12.0'
+    tag: 'v0.13.2'
   config-opts:
-  - -DQTKEYCHAIN_STATIC=ON
+  - -DBUILD_SHARED_LIBS=OFF
   - -DBUILD_TEST_APPLICATION=OFF
+
+- name: libquotient
+  buildsystem: cmake-ninja
+  cleanup: [ /include, /lib, /share ]
+  sources:
+  - type: git
+    url: https://github.com/quotient-im/libQuotient.git
+    tag: '0.7.1'
+    disable-submodules: true
+  config-opts:
+  - -DQuotient_INSTALL_TESTS=OFF
+  - -DQuotient_ENABLE_E2EE=ON
+  - -DBUILD_SHARED_LIBS=OFF
 
 - name: quaternion
   buildsystem: cmake-ninja
@@ -57,4 +72,5 @@ modules:
   sources:
   - type: git
     url: https://github.com/quotient-im/Quaternion.git
-    tag: '0.0.95-beta5'
+    tag: '0.0.96-beta1'
+    disable-submodules: true
