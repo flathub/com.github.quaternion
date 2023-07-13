@@ -60,7 +60,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/quotient-im/Quaternion.git
-    tag: '0.0.96-beta2'
+    tag: '0.0.96-beta3'
     disable-submodules: false
   config-opts:
   - -DQuotient_INSTALL_TESTS=OFF
