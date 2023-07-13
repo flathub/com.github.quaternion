@@ -1,7 +1,7 @@
 id: com.github.quaternion
 rename-icon: quaternion
 runtime: org.kde.Platform
-runtime-version: '5.15-22.08'
+runtime-version: '6.4'
 sdk: org.kde.Sdk
 command: quaternion
 finish-args:
@@ -24,7 +24,7 @@ modules:
   sources:
   - type: git
     url: https://gitlab.matrix.org/matrix-org/olm.git
-    tag:  '3.2.14'
+    tag:  '3.2.15'
   config-opts:
   - -DBUILD_SHARED_LIBS=OFF
   cleanup: [ /include, /lib, /share ]    
@@ -48,29 +48,21 @@ modules:
   sources:
   - type: git
     url: https://github.com/frankosterfeld/qtkeychain.git
-    tag: 'v0.13.2'
+    tag: 'v0.14.0'
   config-opts:
+  - -DBUILD_WITH_QT6=ON
   - -DBUILD_SHARED_LIBS=OFF
   - -DBUILD_TEST_APPLICATION=OFF
 
-- name: libquotient
+- name: quaternion
   buildsystem: cmake-ninja
-  cleanup: [ /include, /lib, /share ]
+  cleanup: [ /include, /lib, /share/ndk-modules ]
   sources:
   - type: git
-    url: https://github.com/quotient-im/libQuotient.git
-    tag: '0.7.1'
-    disable-submodules: true
+    url: https://github.com/quotient-im/Quaternion.git
+    tag: '0.0.96-beta2'
+    disable-submodules: false
   config-opts:
   - -DQuotient_INSTALL_TESTS=OFF
   - -DQuotient_ENABLE_E2EE=ON
   - -DBUILD_SHARED_LIBS=OFF
-
-- name: quaternion
-  buildsystem: cmake-ninja
-  cleanup: [ /lib ]
-  sources:
-  - type: git
-    url: https://github.com/quotient-im/Quaternion.git
-    tag: '0.0.96-beta1'
-    disable-submodules: true
