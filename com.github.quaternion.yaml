@@ -41,14 +41,14 @@ modules:
   sources:
   - type: git
     url: https://gitlab.gnome.org/GNOME/libsecret.git
-    tag: '0.21.2'
+    tag: '0.21.3'
 
 - name: qtkeychain
   buildsystem: cmake-ninja
   sources:
   - type: git
     url: https://github.com/frankosterfeld/qtkeychain.git
-    tag: '0.14.1'
+    tag: '0.14.2'
   config-opts:
   - -DBUILD_WITH_QT6=ON
   - -DBUILD_SHARED_LIBS=OFF
@@ -60,7 +60,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/quotient-im/Quaternion.git
-    tag: '0.0.96-rc1'
+    tag: '0.0.96'
     disable-submodules: false
   config-opts:
   - -DQuotient_INSTALL_TESTS=OFF
