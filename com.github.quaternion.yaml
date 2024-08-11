@@ -65,3 +65,4 @@ modules:
   - -DQuotient_INSTALL_TESTS=OFF
   - -DQuotient_ENABLE_E2EE=ON
   - -DBUILD_SHARED_LIBS=OFF
+
