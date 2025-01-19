@@ -1,68 +1,84 @@
 id: com.github.quaternion
 rename-icon: quaternion
 runtime: org.kde.Platform
-runtime-version: '6.6'
+runtime-version: '6.8'
 sdk: org.kde.Sdk
 command: quaternion
 finish-args:
-- --share=ipc
-- --share=network
-- --socket=wayland
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
 #- --env=QT_QPA_PLATFORM=xcb # wayland QPA plugin still has rough edges
 #- --socket=x11
-- --socket=fallback-x11
-- --device=dri
-- --filesystem=xdg-download
-- --talk-name=org.freedesktop.secrets
-- --talk-name=org.kde.kwalletd5
-- --talk-name=org.freedesktop.Notifications
-- --talk-name=org.kde.StatusNotifierWatcher
+  - --socket=fallback-x11
+  - --device=dri
+  - --filesystem=xdg-download
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.kwalletd5
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
 modules:
-- name: libolm
-  buildsystem: cmake-ninja
-  sources:
-  - type: git
-    url: https://gitlab.matrix.org/matrix-org/olm.git
-    tag:  '3.2.15'
-  config-opts:
-  - -DBUILD_SHARED_LIBS=OFF
-  cleanup: [ /include, /lib, /share ]    
+  - name: libolm
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://gitlab.matrix.org/matrix-org/olm.git
+        tag: 3.2.16
+        commit: 7e0c8277032e40308987257b711b38af8d77cc69
+        x-checker-data:
+          type: git
+          tag.pattern: ([\d.]+)
+    config-opts:
+      - -DBUILD_SHARED_LIBS=OFF
+    cleanup: [/include, /lib, /share]
 
-- name: libsecret
-  buildsystem: meson
-  config-opts:
-  - -Dmanpage=false
-  - -Dvapi=false
-  - -Dgtk_doc=false
-  - -Dintrospection=false
-  - -Dprefer_static=true
-  cleanup: [ /bin, /include, /lib/pkgconfig, /share/man ]
-  sources:
-  - type: git
-    url: https://gitlab.gnome.org/GNOME/libsecret.git
-    tag: '0.21.3'
+  - name: libsecret
+    buildsystem: meson
+    config-opts:
+      - -Dmanpage=false
+      - -Dvapi=false
+      - -Dgtk_doc=false
+      - -Dintrospection=false
+      - -Dprefer_static=true
+    cleanup: [/bin, /include, /lib/pkgconfig, /share/man]
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libsecret.git
+        tag: 0.21.6
+        commit: e59012225c2857d53738574423416b541f11a131
+        x-checker-data:
+          type: git
+          tag.pattern: ([\d.]+)
 
-- name: qtkeychain
-  buildsystem: cmake-ninja
-  sources:
-  - type: git
-    url: https://github.com/frankosterfeld/qtkeychain.git
-    tag: '0.14.2'
-  config-opts:
-  - -DBUILD_WITH_QT6=ON
-  - -DBUILD_SHARED_LIBS=OFF
-  - -DBUILD_TEST_APPLICATION=OFF
+  - name: qtkeychain
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/frankosterfeld/qtkeychain.git
+        tag: 0.15.0
+        commit: ad7344c45a86a4f66cbafc4b081b5f7b876cb0b7
+        x-checker-data:
+          type: git
+          tag.pattern: ([\d.]+)
+    config-opts:
+      - -DBUILD_WITH_QT6=ON
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DBUILD_TEST_APPLICATION=OFF
 
-- name: quaternion
-  buildsystem: cmake-ninja
-  cleanup: [ /include, /lib, /share/ndk-modules ]
-  sources:
-  - type: git
-    url: https://github.com/quotient-im/Quaternion.git
-    tag: '0.0.96.1'
-    disable-submodules: false
-  config-opts:
-  - -DQuotient_INSTALL_TESTS=OFF
-  - -DQuotient_ENABLE_E2EE=ON
-  - -DBUILD_SHARED_LIBS=OFF
+  - name: quaternion
+    buildsystem: cmake-ninja
+    cleanup: [/include, /lib, /share/ndk-modules]
+    sources:
+      - type: git
+        url: https://github.com/quotient-im/Quaternion.git
+        tag: 0.0.96.1
+        commit: b8ccb715ecbc8214bc2d13ee794f8722327984dc
+        disable-submodules: false
+        x-checker-data:
+          type: git
+          tag.pattern: ([\d.]+)
+    config-opts:
+      - -DQuotient_INSTALL_TESTS=OFF
+      - -DQuotient_ENABLE_E2EE=ON
+      - -DBUILD_SHARED_LIBS=OFF
 
