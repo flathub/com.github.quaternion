@@ -59,10 +59,9 @@ modules:
   sources:
   - type: git
     url: https://github.com/quotient-im/Quaternion.git
-    tag: '0.0.96.1'
+    tag: '0.0.96.1-flatpak'
     disable-submodules: false
   config-opts:
   - -DQuotient_INSTALL_TESTS=OFF
-  - -DQuotient_ENABLE_E2EE=ON
   - -DBUILD_SHARED_LIBS=OFF
 
